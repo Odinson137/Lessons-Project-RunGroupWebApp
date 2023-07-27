@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RunGroupWebApp.Data;
 using RunGroupWebApp.Data.Interfaces;
 using RunGroupWebApp.Models;
+using RunGroupWebApp.Repository;
 
 namespace RunGroupWebApp.Controllers
 {
@@ -24,6 +25,22 @@ namespace RunGroupWebApp.Controllers
         {
             Race club = await _raceRepocitory.GetByIdAsync(id);
             return View(club);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Race race)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(race);
+            }
+            _raceRepocitory.Add(race);
+            return RedirectToAction("Index");
         }
     }
 }
