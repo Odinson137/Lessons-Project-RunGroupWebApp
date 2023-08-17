@@ -1,6 +1,5 @@
 ﻿using RunGroupWebApp.Data.Enum;
 using RunGroupWebApp.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RunGroupWebApp.ViewModels
 {
@@ -12,5 +11,6 @@ namespace RunGroupWebApp.ViewModels
         public IFormFile Image { get; set; }
         public Address Address { get; set; }
         public RaceCategory RaceCategory { get; set; }
+        public string AppUserId { get; set; }
     }
 }
